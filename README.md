@@ -112,3 +112,9 @@ Prior work, not part of the entry: the Cerelog board, its firmware, the October 
 ## First real run on Muse Spark 1.3 (7 Nov 2026, 15:0x PT)
 
 Same damaged example, live model, 43 tool steps, 535 s. The agent's parser recovered all 11,122 surviving packets with samples byte-identical to the oracle, named the sync markers, packet length, channel count, checksum rule and 250 Hz rate, and kept the four usable channels. It declined to claim volts per count (correct to not guess, scored 0 against the truth), and grounded 3 of 8 trial labels, which is every label that survived the cut cue log. Total 0.88. Artefacts: `examples/muse-run-2026-11-07/` (reconstruction.json, the parser it wrote, the figure, the log).
+
+## How the day actually went
+
+The plan was tidy: build the agent in the morning, record real sessions after lunch. The day was not. The Meta console refused Google sign-in twice and only took GitHub. It would not issue an API key until a card was on file, and the first card was declined. The claim form for the $100 credits closed at 3 PM. The Cerelog came with a charge-only cable, so the board lit up and said nothing to the laptop until a borrowed cable arrived. The four electrode leads were soldered on a Shack15 table with a Pinecil that only heated once it was moved off the laptop's port onto the charger brick. Then two hours of "pinch tests" read like antennas, not shorts, because the jumpers had been pushed into the GND and SRB2 rows and because two snap clips pressed face to face do not actually touch metal. A steel watch band became the short. By 3:37 PM all four leads read under 2 µV against the reference.
+
+That is the point of the repo. Every one of those failures is a session that would have rotted into a folder with a half-written cue log and a tape nobody could parse. The agent exists so the folder still tells its story later.
