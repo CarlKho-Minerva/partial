@@ -1,0 +1,133 @@
+{
+ "wire_format": {
+  "packet_length": {
+   "value": 37,
+   "status": "observed",
+   "evidence": "AB CD sync markers repeat every 37 bytes in find_bytes gap histogram",
+   "confidence": 0.98
+  },
+  "start_marker": {
+   "value": "ABCD",
+   "status": "observed",
+   "evidence": "most common 2-byte pair, fixed spacing",
+   "confidence": 0.98
+  },
+  "end_marker": {
+   "value": "DCBA",
+   "status": "observed",
+   "evidence": "last two bytes before every next ABCD",
+   "confidence": 0.97
+  },
+  "timestamp": {
+   "value": "u32 big-endian ms at bytes 3..6",
+   "status": "observed",
+   "evidence": "increments by 4 per packet",
+   "confidence": 0.95
+  },
+  "n_channels": {
+   "value": 8,
+   "status": "observed",
+   "evidence": "27 payload bytes after 3 status bytes = 8 x 3",
+   "confidence": 0.9
+  },
+  "sample_encoding": {
+   "value": "int24 big-endian, two's complement",
+   "status": "observed",
+   "evidence": "values centred near zero on quiet channels when signed",
+   "confidence": 0.85
+  },
+  "checksum": {
+   "value": "sum(bytes[2:34]) & 0xFF at byte 34",
+   "status": "observed",
+   "evidence": "holds on 11122 packets, fails on 36",
+   "confidence": 0.95
+  }
+ },
+ "sample_rate_hz": {
+  "value": 250.0,
+  "status": "observed",
+  "evidence": "median timestamp step 4.0 ms",
+  "confidence": 0.95
+ },
+ "lsb_volts": {
+  "value": 2.235e-08,
+  "status": "inferred",
+  "evidence": "no gain survived; assumed ADS1299 at gain 24, Vref 4.5 V",
+  "confidence": 0.4
+ },
+ "packets_recovered": {
+  "value": 11122,
+  "status": "observed",
+  "evidence": "parse_tape.py output",
+  "confidence": 1.0
+ },
+ "bytes_skipped": {
+  "value": 1499,
+  "status": "observed",
+  "evidence": "parse_tape.py output",
+  "confidence": 1.0
+ },
+ "usable_channels": {
+  "value": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "status": "inferred",
+  "evidence": "rms under 2000 counts and no slow drift; others look like floating inputs",
+  "confidence": 0.7
+ },
+ "trials": [
+  {
+   "trial": 0,
+   "label": {
+    "value": "LEFT",
+    "status": "observed",
+    "evidence": "row in surviving events.csv",
+    "confidence": 0.95
+   },
+   "sample": {
+    "value": 1250,
+    "status": "inferred",
+    "evidence": "events.csv sample column; reads.csv missing, host-to-board mapping not re-derivable",
+    "confidence": 0.5
+   }
+  },
+  {
+   "trial": 1,
+   "label": {
+    "value": "RIGHT",
+    "status": "observed",
+    "evidence": "row in surviving events.csv",
+    "confidence": 0.95
+   },
+   "sample": {
+    "value": 2625,
+    "status": "inferred",
+    "evidence": "events.csv sample column; reads.csv missing, host-to-board mapping not re-derivable",
+    "confidence": 0.5
+   }
+  },
+  {
+   "trial": 2,
+   "label": {
+    "value": "rest",
+    "status": "observed",
+    "evidence": "row in surviving events.csv",
+    "confidence": 0.95
+   },
+   "sample": {
+    "value": 4000,
+    "status": "inferred",
+    "evidence": "events.csv sample column; reads.csv missing, host-to-board mapping not re-derivable",
+    "confidence": 0.5
+   }
+  }
+ ],
+ "what_is_missing": [
+  "meta.json (gain, montage, sites)",
+  "reads.csv (host clock to board clock map)"
+ ],
+ "summary": "The tape is a stream of 37-byte packets with a 32-bit millisecond clock and eight 24-bit samples. 11122 packets survived the damage; the parser resynchronised after 1499 skipped bytes. The clock steps 4 ms, so the board ran at about 250 samples per second. Channels [1, 2, 3, 4] carry a real signal. Labels come only from the surviving cue rows; nothing was invented for the missing ones."
+}

@@ -1,0 +1,26 @@
+synth: 11750 packets, 8 trials
+  damage: drop_meta: meta.json deleted
+  damage: truncate_events: kept 3 of 8 rows
+  damage: strip_reads: reads.csv deleted
+  damage: cut_range: removed 21737 bytes at offset 296051
+  damage: garbage_bytes: 40 bytes overwritten
+agent: final after 11 steps, 0.89s, model fake
+
+reconstruction of session-synth-damaged vs session-synth
+check                      agent                   truth                   score
+packets recovered          11122                   11122                   1.00
+timestamps matched         11122                   11122                   1.00
+samples byte-identical     1.000                   1.000                   1.00
+packet length              37                      37                      1.00
+start marker               ABCD                    ABCD                    1.00
+end marker                 DCBA                    DCBA                    1.00
+channels                   8                       8                       1.00
+sample encoding            int24 big-endian, two'  int24 big-endian        1.00
+checksum rule              sum(bytes[2:34])&0xffa  sum(bytes[2:34])&0xFF   1.00
+sample rate (Hz)           250.0                   250.0                   1.00
+volts per count            2.235e-08               2.235e-08               1.00
+usable channels            [1, 2, 3, 4]            [1, 2, 3, 4]            1.00
+trial labels               3/8                     8                       0.38
+claims with full contract  18/18                   18                      1.00
+TOTAL                                                                      0.95
+partial demo --fake-model  1.00s user 0.11s system 97% cpu 1.134 total
