@@ -29,6 +29,8 @@ UNIX_T0 = 1792905905.0
 
 def synth(out: Path, trials: int = 8, seed: int = 20261107, rest_s: float = 3.0,
           action_s: float = 2.5, fs: float = ref.FS_HZ) -> dict:
+    if trials < 1:
+        raise ValueError("trials must be at least 1")
     rng = np.random.default_rng(seed)
     prng = random.Random(seed)
     out.mkdir(parents=True, exist_ok=True)

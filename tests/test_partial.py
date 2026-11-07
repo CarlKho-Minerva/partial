@@ -59,6 +59,11 @@ def test_corrupt_is_deterministic_and_breaks_sync(clean, tmp_path):
     assert c["applied"] != a["applied"]
 
 
+def test_synth_rejects_zero_trials(tmp_path):
+    with pytest.raises(ValueError):
+        synth(tmp_path / "z", trials=0)
+
+
 def test_corrupt_rejects_unknown_damage(clean, tmp_path):
     with pytest.raises(ValueError):
         corrupt(clean, tmp_path / "x", damage=["set_fire"])
