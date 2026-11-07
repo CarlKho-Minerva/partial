@@ -1,0 +1,97 @@
+{
+  "EXPLORATORY": true,
+  "bias": "clavicle_L",
+  "board_version": "V2",
+  "clock_map": {
+    "a": 92771.6,
+    "b": 0.0,
+    "latency_p95_ms": 2.9,
+    "points": 9
+  },
+  "drops": {
+    "backwards": 0,
+    "dropped": 0,
+    "effective_fs_hz": 250.0,
+    "gaps": 0,
+    "span_s": 46.996
+  },
+  "firmware_defaults": {
+    "chnset": 96,
+    "fs_hz": 250.0,
+    "gain": 24,
+    "source": "V2_FW.ino register table"
+  },
+  "fs_hz": 250.0,
+  "gain": 24,
+  "handshake_mono": 92774.0,
+  "handshake_unix": 1792905905.0,
+  "kind": "block",
+  "lsb_volts": 2.2351741790771484e-08,
+  "mode": "silent",
+  "n_channels": 8,
+  "n_events": 8,
+  "packet_format": {
+    "checksum": "sum(bytes[2:34]) & 0xFF at byte 34",
+    "end": "DCBA",
+    "length": 37,
+    "samples": "8 x int24 big-endian from byte 10",
+    "start": "ABCD",
+    "timestamp": "u32 big-endian ms at byte 3"
+  },
+  "packets": 11750,
+  "parse": {
+    "checksum_failures": 0,
+    "skipped_bytes": 0
+  },
+  "ref_srb1": "mastoid_L",
+  "seed": 20261107,
+  "sites": {
+    "1": "mental",
+    "2": "submental_mid",
+    "3": "pre_tragus_R",
+    "4": "post_lobule_R"
+  },
+  "status": "complete",
+  "synthetic": true,
+  "tape_bytes": 434750,
+  "trials": [
+    {
+      "label": "LEFT",
+      "trial": 0
+    },
+    {
+      "label": "RIGHT",
+      "trial": 1
+    },
+    {
+      "label": "rest",
+      "trial": 2
+    },
+    {
+      "label": "lip_purse",
+      "trial": 3
+    },
+    {
+      "label": "UP",
+      "trial": 4
+    },
+    {
+      "label": "mouth_open",
+      "trial": 5
+    },
+    {
+      "label": "mouth_open",
+      "trial": 6
+    },
+    {
+      "label": "jaw_clench",
+      "trial": 7
+    }
+  ],
+  "wired_channels": [
+    1,
+    2,
+    3,
+    4
+  ]
+}
