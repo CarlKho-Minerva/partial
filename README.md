@@ -108,3 +108,7 @@ Prior work, not part of the entry: the Cerelog board, its firmware, the October 
 - Volts per count cannot be read off the tape at all; the oracle knows it from the firmware constant. A fair reconstruction marks it `inferred` unless `meta.json` survived.
 - The scorer rewards the protocol the oracle knows. A different board needs a different oracle.
 - Real sessions from the private repo are not included; `partial score` works on them unchanged if you have one.
+
+## First real run on Muse Spark 1.3 (7 Nov 2026, 15:0x PT)
+
+Same damaged example, live model, 43 tool steps, 535 s. The agent's parser recovered all 11,122 surviving packets with samples byte-identical to the oracle, named the sync markers, packet length, channel count, checksum rule and 250 Hz rate, and kept the four usable channels. It declined to claim volts per count (correct to not guess, scored 0 against the truth), and grounded 3 of 8 trial labels, which is every label that survived the cut cue log. Total 0.88. Artefacts: `examples/muse-run-2026-11-07/` (reconstruction.json, the parser it wrote, the figure, the log).
