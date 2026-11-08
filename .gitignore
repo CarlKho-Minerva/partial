@@ -10,3 +10,8 @@ figures/*.png
 /demo-*/
 demo/takes/
 demo/*.mp4
+demo/partial-submission.mp4
+demo/takes/
+demo/live-*.mp4
+demo/screen-*.mp4
+demo/camera-*.mp4
