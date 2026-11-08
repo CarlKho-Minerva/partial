@@ -7,6 +7,11 @@
 #   audio [0] MacBook Pro Microphone   [1] LoomAudioDevice
 # Override with SCREEN_DEV, CAM_DEV, MIC_DEV if the list changes. Run it in a Terminal window on the 48 itself:
 # the first run asks for Screen Recording and Camera permission for Terminal, which an ssh shell cannot answer.
+# KNOWN FLAW (2026-11-07, measured in the edit): two separate ffmpeg processes drift apart by about 13 ms per
+# second (camera relative to screen), so a fixed offset is 1 s wrong after 80 s. The v3 edit measured the lag every
+# 5 s by cross-correlating the two mic tracks and stretched the camera onto the screen clock (demo/xcorr_v3.py).
+# The real fix, not yet built: one ffmpeg with both inputs and two outputs (-map per output), so both files share
+# a clock, or a visible clap at the start of every take.
 set -u
 HERE=$(cd "$(dirname "$0")" && pwd)
 PIDFILE="$HERE/.record_live.pid"
