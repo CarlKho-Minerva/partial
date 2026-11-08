@@ -1,8 +1,8 @@
 # partial
 
-[![partial demo video](docs/figures/video-thumbnail.jpg)](https://cap.carl.selfhost.imbue.com/s/be9dzy4kse7b5yq)
+[![partial demo video](docs/figures/video-thumbnail.jpg)](https://cap.carl.selfhost.imbue.com/s/gkwvveh8jqjjjcj)
 
-*Two minutes, recorded at Shack15 on the day: the electrodes, the clench on the live scope, the damaged folder, and the honest score.* Video: https://cap.carl.selfhost.imbue.com/s/be9dzy4kse7b5yq
+*Two minutes, recorded at Shack15 on the day: the electrodes, the clench on the live scope, the damaged folder, and the honest score.* Video: https://cap.carl.selfhost.imbue.com/s/gkwvveh8jqjjjcj
 
 
 **Reconstruct a damaged biosignal recording from its raw serial tape, and say which parts you saw and which parts you guessed.**
