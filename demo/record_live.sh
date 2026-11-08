@@ -30,12 +30,12 @@ start() {
     -f avfoundation -framerate "$FPS" -capture_cursor 1 -pixel_format uyvy422 -i "${SCREEN_DEV}:${MIC_DEV}" \
     -vf "scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2,setsar=1,format=yuv420p" \
     -c:v h264_videotoolbox -b:v 8M -r "$FPS" -pix_fmt yuv420p -c:a aac -b:a 160k -ar 48000 \
-    -movflags +faststart "${dur[@]}" "$scr" >"$HERE/.record_screen.log" 2>&1 &
+    -movflags +frag_keyframe+empty_moov "${dur[@]}" "$scr" >"$HERE/.record_screen.log" 2>&1 &
   local p1=$!
   ffmpeg -nostdin -hide_banner -loglevel warning \
     -f avfoundation -framerate "$FPS" -pixel_format uyvy422 -i "${CAM_DEV}:${MIC_DEV}" \
     -vf "format=yuv420p" -c:v h264_videotoolbox -b:v 8M -r "$FPS" -pix_fmt yuv420p -c:a aac -b:a 160k -ar 48000 \
-    -movflags +faststart "${dur[@]}" "$cam" >"$HERE/.record_camera.log" 2>&1 &
+    -movflags +frag_keyframe+empty_moov "${dur[@]}" "$cam" >"$HERE/.record_camera.log" 2>&1 &
   local p2=$!
   echo "$p1 $p2" > "$PIDFILE"
   sleep 3
