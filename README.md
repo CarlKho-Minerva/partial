@@ -1,5 +1,10 @@
 # partial
 
+[![partial demo video](docs/figures/video-thumbnail.jpg)](https://cap.carl.selfhost.imbue.com/s/be9dzy4kse7b5yq)
+
+*Two minutes, recorded at Shack15 on the day: the electrodes, the clench on the live scope, the damaged folder, and the honest score.* Video: https://cap.carl.selfhost.imbue.com/s/be9dzy4kse7b5yq
+
+
 **Reconstruct a damaged biosignal recording from its raw serial tape, and say which parts you saw and which parts you guessed.**
 
 Built on 7 November 2026 at the AIE Code Summit 2026 Hackathon (Shack15, San Francisco) for the **Software Archaeology** track, on the Meta Model API (`muse-spark-1.3`). Carl Kho, Somach Systems, Inc.
@@ -112,6 +117,28 @@ Prior work, not part of the entry: the Cerelog board, its firmware, the October 
 ## First real run on Muse Spark 1.3 (7 Nov 2026, 15:0x PT)
 
 Same damaged example, live model, 43 tool steps, 535 s. The agent's parser recovered all 11,122 surviving packets with samples byte-identical to the oracle, named the sync markers, packet length, channel count, checksum rule and 250 Hz rate, and kept the four usable channels. It declined to claim volts per count (correct to not guess, scored 0 against the truth), and grounded 3 of 8 trial labels, which is every label that survived the cut cue log. Total 0.88. Artefacts: `examples/muse-run-2026-11-07/` (reconstruction.json, the parser it wrote, the figure, the log).
+
+## Figures from the day
+
+**The first block on skin, 15:48 PT.** Two channels, 12 trials, cue windows shaded. The heat map is the activation in decibels above rest per label and channel: jaw clench 14.8 dB on the ear channel, lip purse and mouth open strongest on the chin, the mouthed UP and DOWN near rest, as the pre-registration expected.
+
+![QC of the real block](docs/figures/real-block-qc.png)
+
+**The live scope while the pads went on.** Left: the chin pad live at 48 µV with two jaw movements; the ear pad not yet pressed (hum). Right: both pads settled, 15 and 13 µV, hum down to 80 µV. Channels 3 to 8 floating as designed. On the raw trace a clench reads as a small bump on a large slow drift, which is why the band-passed view was added afterwards.
+
+| chin pad on | both pads settled |
+|---|---|
+| ![scope with the chin pad live](docs/figures/scope-chin-pad-live.webp) | ![scope with both pads on](docs/figures/scope-pads-on.webp) |
+
+**The hardware, as built on the table.** Four snap leads soldered to female-to-male jumpers; the header rows with white on SRB1, grey on Bias, purple on channel 1, blue on channel 2.
+
+| the four joints | the header |
+|---|---|
+| ![leads soldered](docs/figures/leads-soldered.jpg) | ![header wiring](docs/figures/header-wiring.jpg) |
+
+**The agent's own figure, synthetic block.** Drawn by the parser it wrote, channels 5 to 8 greyed as floating, the cut in the tape visible as a straight line near 32 s.
+
+![agent overview figure](docs/figures/muse-synthetic-overview.png)
 
 ## How the day actually went
 
