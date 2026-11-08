@@ -1,0 +1,18 @@
+check                      agent                   truth                   score
+packets recovered          17049                   17049                   1.00
+timestamps matched         17045                   17049                   1.00
+samples byte-identical     1.000                   1.000                   1.00
+packet length              None                    37                      0.00
+start marker               -                       ABCD                    0.00
+end marker                 -                       DCBA                    0.00
+channels                   None                    8                       0.00
+sample encoding            -                       int24 big-endian        0.00
+checksum rule              -                       sum(bytes[2:34])&0xFF   0.00
+sample rate (Hz)           None                    250.0                   0.00
+volts per count            None                    2.235e-08               0.00
+trial labels               0/12                    12                      0.00
+claims with full contract  0/0                     0                       0.00
+TOTAL                                                                      0.23
+  note: no reconstruction.json
+
+[exited with code 0]

@@ -1,0 +1,10 @@
+{
+  "seed": 1,
+  "applied": [
+    "drop_meta: meta.json deleted",
+    "truncate_events: kept 5 of 12 rows",
+    "strip_reads: reads.csv deleted",
+    "cut_range: removed 33345 bytes at offset 140928",
+    "garbage_bytes: 40 bytes overwritten"
+  ]
+}

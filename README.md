@@ -118,3 +118,14 @@ Same damaged example, live model, 43 tool steps, 535 s. The agent's parser recov
 The plan was tidy: build the agent in the morning, record real sessions after lunch. The day was not. The Meta console refused Google sign-in twice and only took GitHub. It would not issue an API key until a card was on file, and the first card was declined. The claim form for the $100 credits closed at 3 PM. The Cerelog came with a charge-only cable, so the board lit up and said nothing to the laptop until a borrowed cable arrived. The four electrode leads were soldered on a Shack15 table with a Pinecil that only heated once it was moved off the laptop's port onto the charger brick. Then two hours of "pinch tests" read like antennas, not shorts, because the jumpers had been pushed into the GND and SRB2 rows and because two snap clips pressed face to face do not actually touch metal. A steel watch band became the short. By 3:37 PM all four leads read under 2 µV against the reference.
 
 That is the point of the repo. Every one of those failures is a session that would have rotted into a folder with a half-written cue log and a tape nobody could parse. The agent exists so the folder still tells its story later.
+
+## The real block, recorded on skin the same afternoon (honest result)
+
+At 15:48 PT a 12-trial block was recorded on Carl's face (chin and right ear, Cerelog V1, Mac on battery). Its tape, metadata, cue log and read log were copied, damaged the same way as the synthetic example (metadata deleted, 7 of 12 cue rows cut, read log deleted, 33,345 bytes cut from the tape, 40 garbled), and given to the agent. Two runs:
+
+| run | steps | packets recovered | samples byte-identical | report written | total |
+|---|---|---|---|---|---|
+| attempt 1 | 40 (cap) | 17,049 of 17,049 | no (9 channels parsed) | no | 0.15 |
+| attempt 2 | 80 (cap) | 17,049 of 17,049 | yes, 1.000 | no | 0.23 |
+
+In words: on real bytes the agent's parser became byte-identical to the real driver by the second run, which is the hard part of the track. It then kept exploring and never wrote `reconstruction.json` or the figure before the step cap, so every claim row scores zero and the total is low. The scorer is doing its job: a parser that works is not a reconstruction until the claims are written down with their evidence. The fix is a budget check in the loop that forces the report at 70% of the steps; it is not in this submission. Artefacts: `examples/real-run-20261107-attempt1/`, `examples/real-run-20261107-attempt2/`.

@@ -8,3 +8,5 @@ figures/*.png
 .pytest_cache/
 .DS_Store
 /demo-*/
+demo/takes/
+demo/*.mp4
